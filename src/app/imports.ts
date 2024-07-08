@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     InputTextareaModule,
     ToastModule,
     RippleModule,
+    CalendarModule
   ],
   exports: [
     CommonModule,
@@ -31,6 +33,8 @@ import { CommonModule } from '@angular/common';
     InputTextareaModule,
     ToastModule,
     RippleModule,
+    CalendarModule
+
   ],
   providers: [  ]
 })

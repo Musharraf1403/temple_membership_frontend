@@ -20,12 +20,26 @@ export class AppComponent {
     name: new FormControl("", [Validators.required]),
     email: new FormControl("", [Validators.required]),
     phone: new FormControl("", [Validators.required]),
-    address: new FormControl("", [Validators.required])
+    address: new FormControl("", [Validators.required]),
+    pincode: new FormControl("", [Validators.required]),
+    function_date: new FormControl("", [Validators.required])
   });
   apiURL = environment.apiURL;
   loading = false;
+  disabledDates = [];
+  minDate = new Date();
+  maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
+  ngOnInit() {
+    this.http.get(`${this.apiURL}/api/membership/getBlockedDates`).subscribe((value:any)=>{
+      for(let date of value.blocked_dates) {
+        this.disabledDates.push(new Date(date))
+      }
+      console.log(this.disabledDates);
+    })
+  }
+  
   onCreate() {
     if (this.membershipForm.valid) {
       this.loading = true;

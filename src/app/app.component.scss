@@ -8,3 +8,11 @@
         font-weight: bold;
     }
 }
+
+:host {
+    ::ng-deep {
+        .p-calendar{
+            width: 100%;
+        }
+    }
+}
