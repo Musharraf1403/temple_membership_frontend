@@ -1,0 +1,36 @@
+<div class="container flex flex-column gap-3">
+    <div class="header">
+      Membership Form
+    </div>
+    <div class="form flex flex-column gap-2" [formGroup]="membershipForm">
+      <div class="flex flex-column gap-2">
+        <label for="username" class="font-bold">Name</label>
+        <input pInputText id="username" aria-describedby="username-help" formControlName="name" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="email" class="font-bold">Email</label>
+        <input pInputText id="email" aria-describedby="email-help" formControlName="email" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="phone" class="font-bold">Phone No.</label>
+        <input pInputText id="phone" aria-describedby="phone" formControlName="phone" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="address" class="font-bold">Address</label>
+        <textarea rows="5" cols="30" pInputTextarea formControlName="address"></textarea>
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="phone" class="font-bold">Pincode</label>
+        <input pInputText id="phone" aria-describedby="pincode" formControlName="pincode" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="phone" class="font-bold">Function Date</label>
+        <p-calendar [minDate]="minDate" [maxDate]="maxDate" formControlName="function_date" [disabledDates]="disabledDates" />
+      </div>
+      <div class="card flex justify-content-center">
+        <p-button *ngIf="!loading" label="Create" (onClick)="onCreate()" />
+        <p-button *ngIf="loading" label="Creating" />
+      </div>
+    </div>
+  </div>
+  <p-toast />

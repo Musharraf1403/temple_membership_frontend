@@ -1,36 +1,160 @@
-<div class="container flex flex-column gap-3">
-  <div class="header">
-    Membership Form
+<!-- <app-membership-form></app-membership-form> -->
+<div class="main-container">
+  <div class="top-container">
+    <div class="header">
+      <div class="temple-details">
+        <div class="image"></div>
+        <div class="temple-name">Livepool Murugan Temple</div>
+      </div>
+      <div class="header-nav-links">
+        <div class="header-link">Home</div>
+        <div class="header-link">About Us</div>
+        <div class="header-link">Contact Us</div>
+        <div class="header-link">Visit Us</div>
+        <div class="header-link">Gallery</div>
+      </div>
+    </div>
+    <div class="hero-section">
+
+    </div>
+    <div class="middle-row-section">
+      <img src="../assets/images/leftvel.png" alt="">
+      <div class="details-part">
+        <div>Enroll Now Perform Paal</div>
+        <div>Abisekham on your own hands</div>
+      </div>
+      <img src="../assets/images/rightvel.png" alt="">
+    </div>
+    <div class="about-us-section">
+      <div class="title">
+        <div class="line1">Support Liverpool Murugan</div>
+        <div class="line2">Temple's New Home</div>
+      </div>
+      <div class="content">
+        <div class="left">
+          <p> We are raising funds to construct a new temple for the Liverpool Murugan Temple, established in 2017.
+            After operating in a rented space for 7 years, we have secured our own land and are now working towards
+            building a beautiful, traditional temple to serve the Hindu community in Wirral.
+          </p>
+          <p>Your support will help create a sacred space for worship, cultural events, and community gatherings. Join
+            us in this noble cause and contribute to bringing peace, prosperity, and blessings to all.
+          </p>
+        </div>
+        <div class="right">
+          <img src="../assets/images/about-us.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="plans-section">
+      <div class="plan">
+        <div class="scheme-details">
+          <div class="name">Yearly Temple Scheme</div>
+          <div class="price">&#163; 101</div>
+        </div>
+        <div class="divider">
+          <hr>
+        </div>
+        <div class="benefits">
+          <div class="benefit">
+            <span> <strong>Paal Abishegam</strong> - Performed personally by the devotee to Utsavar unity</span>
+          </div>
+          <div class="benefit">
+            <span> <strong>Moolavar Abishegam</strong> - Conducted by the temple Gurukkal (priest).</span>
+          </div>
+          <div class="benefit">
+            <span> <strong>Prasadam Distribution</strong> - Offered to all visitors in the booker's name.</span>
+          </div>
+        </div>
+        <div class="subscribe-now">
+          <button>Subscribe now</button>
+        </div>
+      </div>
+      <div class="plan">
+        <div class="scheme-details">
+          <div class="name">Monthly Temple Scheme</div>
+          <div class="price">&#163; 21</div>
+        </div>
+        <div class="divider">
+          <hr>
+        </div>
+        <div class="benefits">
+          <div class="benefit">
+            <span>Held on the third Friday of every month.</span>
+          </div>
+          <div class="benefit">
+            <span>
+              Participation in <strong>Satru Samhara Homam</strong> (ritual for removing obstacles).</span>
+          </div>
+          <div class="benefit">
+            <span>Blessings for wellness and prosperity for all devotees.</span>
+          </div>
+        </div>
+        <div class="subscribe-now">
+          <button>Subscribe now</button>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-section">
+
+    </div>
+    <div class="enroll-now-section">
+
+    </div>
   </div>
-  <div class="form flex flex-column gap-2" [formGroup]="membershipForm">
-    <div class="flex flex-column gap-2">
-      <label for="username" class="font-bold">Name</label>
-      <input pInputText id="username" aria-describedby="username-help" formControlName="name" />
+  <div class="footer">
+    <div class="footer-top-container">
+      <div class="temple-details">
+        <div class="image"></div>
+        <div class="name">Liverpool Murugan Temple</div>
+      </div>
+      <div class="nav-links">
+        <div class="link">Home</div>
+        <div class="link">About Us</div>
+        <div class="link">Gallery</div>
+        <div class="link">Visit Us</div>
+        <div class="link">Contact Us</div>
+        <div class="link">Thiruvizha</div>
+        <div class="link">Pooja</div>
+
+      </div>
+      <div class="contact-us-details">
+        <div class="title">Contact Us</div>
+        <div class="categories">
+          <div class="category">
+            <div class="image">
+              <i class="pi pi-phone"></i>
+            </div>
+            <div class="details">
+              <div class="label">Call Us</div>
+              <div class="value">
+                +44(0)7910961914</div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="image">
+              <i class="pi pi-envelope"></i>
+            </div>
+            <div class="details">
+              <div class="label">Mail Us</div>
+              <div class="value">contact"&#64;"liverpoolmurugantemple.org.uk</div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="image">
+              <i class="pi pi-map-marker"></i>
+            </div>
+            <div class="details">
+              <div class="label">Location</div>
+              <div class="value">21 Park Street, Birkenhead, CH41 3LY</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-column gap-2">
-      <label for="email" class="font-bold">Email</label>
-      <input pInputText id="email" aria-describedby="email-help" formControlName="email" />
-    </div>
-    <div class="flex flex-column gap-2">
-      <label for="phone" class="font-bold">Phone No.</label>
-      <input pInputText id="phone" aria-describedby="phone" formControlName="phone" />
-    </div>
-    <div class="flex flex-column gap-2">
-      <label for="address" class="font-bold">Address</label>
-      <textarea rows="5" cols="30" pInputTextarea formControlName="address"></textarea>
-    </div>
-    <div class="flex flex-column gap-2">
-      <label for="phone" class="font-bold">Pincode</label>
-      <input pInputText id="phone" aria-describedby="pincode" formControlName="pincode" />
-    </div>
-    <div class="flex flex-column gap-2">
-      <label for="phone" class="font-bold">Function Date</label>
-      <p-calendar [minDate]="minDate" [maxDate]="maxDate" formControlName="function_date" [disabledDates]="disabledDates" />
-    </div>
-    <div class="card flex justify-content-center">
-      <p-button *ngIf="!loading" label="Create" (onClick)="onCreate()" />
-      <p-button *ngIf="loading" label="Creating" />
+    <div class="bottom-container">
+      <div class="copyright">
+        Copyright © 2017 Liverpool Murugan Temple - All Rights Reserved
+      </div>
     </div>
   </div>
 </div>
-<p-toast />

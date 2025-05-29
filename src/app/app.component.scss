@@ -1,18 +1,229 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .header {
-        font-size: xx-large;
-        font-weight: bold;
-    }
-}
+.main-container {
+    height: 100%;
+    .top-container {
+        background: #D98F3E;
+        padding: 1.75rem 4.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        background-image: url('../assets/images/centerbackground.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        .header {
+            background: #FFFFFF;
+            padding: 1.5rem 1rem;
+            border-radius: 105px;
+            display: flex;
+            justify-content: space-between;
+            .temple-details {
+                display: flex;
+                gap: 1rem;
+                .temple-name {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #0F4B2D;
+                }
+            }
+            .header-nav-links {
+                display: flex;
+                gap: 1rem;
+                color: #A1A0A0;
+                font-size: 20px;
+            }            
+        }
+        .middle-row-section {
+            background-image: linear-gradient(90deg, #0F4B2D, #22B16A);
+            display: flex;
+            padding: 1rem 2rem;
+            justify-content: space-between;
+            .details-part {
+                color: #FFFFFF;
+                font-size: 24px;
+            }
+        }
 
-:host {
-    ::ng-deep {
-        .p-calendar{
-            width: 100%;
+        .about-us-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            background: #FFFFFF;
+            border-radius: 2rem;
+            padding: 2.5rem 6.5rem 6.5rem 6.5rem;
+            background-image: url(../assets/images/omimage.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 500px 500px;
+            .title {
+                font-size: 40px;
+                font-weight: bold;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: #0F4F2F;
+            }
+            .content {
+                display: flex;
+                gap: 5rem;
+                justify-content: space-around;
+                .left {
+                    font-size: 24px;
+                    color: #9C9A9A;
+                }
+                .right {
+                    border-radius: 1rem;
+                }
+            }
+            
+        }
+        .plans-section {
+            display: flex;
+            gap: 3rem;
+            padding: 196px 57px;
+            background-color: #0F4F2F;
+            border-radius: 2rem;
+            background-image: url('../assets/images/plans.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blend-mode: exclusion;
+            justify-content: center;
+            flex-wrap: wrap;
+            .plan {
+                background: #FFFFFF;
+                border-radius: 2rem;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                max-width: 600px;
+                min-width: 400px;
+                .scheme-details {
+                    display: flex;
+                    justify-content: space-between;
+                    .name {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #0F4B2D;
+                    }
+                    .price {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #FFFFFF;
+                        padding: 0.5rem 2rem;
+                        border-radius: 110px;
+                        background: #FA5507;
+                    }
+                }
+                hr {
+                    height: 8px;
+                    background: linear-gradient(90deg, #0F4B2D, 50%, #FA5507 50%);
+                }
+                .benefits {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    margin-bottom: auto;
+                    .benefit {
+                        color: #333333;
+                        font-size: 20px;
+                    }
+                }
+                .subscribe-now {
+                    button {
+                        cursor: pointer;
+                        background: #0F4B2D;
+                        border: none;
+                        border-radius: 111px;
+                        color: #FFFFFF;
+                        font-size: 20px;
+                        font-weight: bold;
+                        padding: 1rem 3rem;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .footer {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        width: 100%;
+        background: #FFFFFF;
+        padding-top: 4.5rem;
+        .footer-top-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            .temple-details {
+                font-size: 32px;
+                font-weight: bold;
+                color: #0F4B2D;
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.875rem;
+                font-size: 24px;
+                font-weight: bold;
+                .link {
+                    cursor: pointer;
+                    &:hover {
+                        color: #6B6B6B;
+                    }
+                }
+
+            }
+            .contact-us-details {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                .title {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+                .categories {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .category {
+                        display: flex;
+                        gap: 1rem;
+                        .image {
+                            width: 48px;
+                            height: 48px;
+                            background: #4C4D52;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #EA892E;
+                        }
+                        .details {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.25rem;
+                            .label {
+                                font-weight: bold;
+                                font-size: 20px;
+                                color: #6B6B6B;
+                            }
+                            .value {
+                                font-size: 18px;
+                                color: #6B6B6B;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bottom-container {
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
         }
     }
 }
