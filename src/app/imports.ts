@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
+import { GalleriaModule } from 'primeng/galleria';
+import { CarouselModule } from 'primeng/carousel';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   imports: [
@@ -21,7 +25,11 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextareaModule,
     ToastModule,
     RippleModule,
-    CalendarModule
+    CalendarModule,
+    GalleriaModule,
+    CarouselModule,
+    DialogModule,
+    SidebarModule
   ],
   exports: [
     CommonModule,
@@ -33,7 +41,11 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextareaModule,
     ToastModule,
     RippleModule,
-    CalendarModule
+    CalendarModule,
+    GalleriaModule,
+    CarouselModule,
+    DialogModule,
+    SidebarModule
 
   ],
   providers: [  ]

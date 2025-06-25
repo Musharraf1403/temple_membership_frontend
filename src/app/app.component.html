@@ -1,31 +1,45 @@
-<!-- <app-membership-form></app-membership-form> -->
 <div class="main-container">
   <div class="top-container">
     <div class="header">
       <div class="temple-details">
-        <div class="image"></div>
+        <div class="image"><img src="../assets/images/header-image.png" alt=""></div>
         <div class="temple-name">Livepool Murugan Temple</div>
       </div>
       <div class="header-nav-links">
-        <div class="header-link">Home</div>
-        <div class="header-link">About Us</div>
-        <div class="header-link">Contact Us</div>
-        <div class="header-link">Visit Us</div>
-        <div class="header-link">Gallery</div>
+        <div class="header-link" (click)="navigateToSection('home')">Home</div>
+    <div class="header-link" (click)="navigateToSection('about-us')">About Us</div>
+    <div class="header-link" (click)="navigateToSection('contact')">Contact Us</div>
+    <div class="header-link" (click)="navigateToSection('enroll')">Visit Us</div>
+    <div class="header-link" (click)="navigateToSection('gallery')">Gallery</div>
+  </div>
+      <div class="header-menu" (click)="sidebarVisible1 = true">
+        <i class="pi pi-bars"></i>
       </div>
     </div>
-    <div class="hero-section">
-
+    <div class="hero-section" id="home">
+      <div class="hero-content">
+        <div class="welcome-text">Welcome to</div>
+        <div class="temple-text">Liverpool Murugan <div>Temple</div>
+        </div>
+        <hr>
+        <div class="timing-details">
+          <div class="label">Timings (Everyday)</div>
+          <div><i class="pi pi-clock"></i> 5.30 PM to <i class="pi pi-clock"></i> 7.30PM</div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img class="hero-section-image" src="../assets/images/hero-image.png" alt="">
+      </div>
     </div>
     <div class="middle-row-section">
-      <img src="../assets/images/leftvel.png" alt="">
+      <img class="image1" src="../assets/images/leftvel.png" alt="">
       <div class="details-part">
         <div>Enroll Now Perform Paal</div>
         <div>Abisekham on your own hands</div>
       </div>
-      <img src="../assets/images/rightvel.png" alt="">
+      <img class="image2" src="../assets/images/rightvel.png" alt="">
     </div>
-    <div class="about-us-section">
+    <div class="about-us-section" id="about-us">
       <div class="title">
         <div class="line1">Support Liverpool Murugan</div>
         <div class="line2">Temple's New Home</div>
@@ -41,11 +55,11 @@
           </p>
         </div>
         <div class="right">
-          <img src="../assets/images/about-us.png" alt="">
+          <img class="about-us-image" src="../assets/images/about-us.png" alt="">
         </div>
       </div>
     </div>
-    <div class="plans-section">
+    <div class="plans-section" id="enroll">
       <div class="plan">
         <div class="scheme-details">
           <div class="name">Yearly Temple Scheme</div>
@@ -66,7 +80,7 @@
           </div>
         </div>
         <div class="subscribe-now">
-          <button>Subscribe now</button>
+          <button (click)="onClickSubscribe('yearly', 101)">Subscribe now</button>
         </div>
       </div>
       <div class="plan">
@@ -90,32 +104,51 @@
           </div>
         </div>
         <div class="subscribe-now">
-          <button>Subscribe now</button>
+          <button (click)="onClickSubscribe('monthly', 21)">Subscribe now</button>
         </div>
       </div>
     </div>
-    <div class="gallery-section">
-
+    <div class="gallery-section" id="gallery">
+      <div class="title">Our Gallery</div>
+      <div class="images">
+        <p-carousel [value]="images" [numVisible]="2" [numScroll]="2" [responsiveOptions]="responsiveOptions">
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" class="gallery-image" />
+          </ng-template>
+        </p-carousel>
+      </div>
     </div>
     <div class="enroll-now-section">
-
+      <div class="enroll-now-image">
+      </div>
+      <div class="enroll-now-content">
+        <div class="text">
+          Enroll Now Perform Paal
+          <div>Abhisekham on you own</div>
+          <div>hands</div>
+        </div>
+        <div class="button">
+          <button (click)="navigateToSection('enroll')">Subscribe Now</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="footer">
     <div class="footer-top-container">
       <div class="temple-details">
-        <div class="image"></div>
+        <div class="image">
+          <img src="../assets/images/header-image.png" alt="">
+        </div>
         <div class="name">Liverpool Murugan Temple</div>
       </div>
       <div class="nav-links">
-        <div class="link">Home</div>
-        <div class="link">About Us</div>
-        <div class="link">Gallery</div>
-        <div class="link">Visit Us</div>
-        <div class="link">Contact Us</div>
-        <div class="link">Thiruvizha</div>
-        <div class="link">Pooja</div>
-
+        <div class="link" (click)="navigateToSection('home')">Home</div>
+        <div class="link" (click)="navigateToSection('about-us')">About Us</div>
+        <div class="link" (click)="navigateToSection('gallery')">Gallery</div>
+        <div class="link" (click)="navigateToSection('enroll')">Visit Us</div>
+        <div class="link" (click)="navigateToSection('contact-us')">Contact Us</div>
+        <div class="link" (click)="navigateToSection('thiruvizha')">Thiruvizha</div>
+        <div class="link" (click)="navigateToSection('pooja')">Pooja</div>
       </div>
       <div class="contact-us-details">
         <div class="title">Contact Us</div>
@@ -158,3 +191,17 @@
     </div>
   </div>
 </div>
+
+<p-dialog [modal]="true" [(visible)]="openForm" class="dialog-box">
+  <app-membership-form [package_plan]="package_plan" [package_price]="package_price"></app-membership-form>
+</p-dialog>
+
+<p-sidebar [(visible)]="sidebarVisible1" position="right">
+  <div class="header-side-nav-links">
+    <div class="header-link" (click)="navigateToSection('home')">Home</div>
+    <div class="header-link" (click)="navigateToSection('about-us')">About Us</div>
+    <div class="header-link" (click)="navigateToSection('contact')">Contact Us</div>
+    <div class="header-link" (click)="navigateToSection('enroll')">Visit Us</div>
+    <div class="header-link" (click)="navigateToSection('gallery')">Gallery</div>
+  </div>
+</p-sidebar>

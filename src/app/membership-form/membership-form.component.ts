@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { ImportsModule } from '../imports';
   providers: [MessageService]
 })
 export class MembershipFormComponent {
+  @Input() package_plan: string = 'yearly';
+  @Input() package_price: number = 101;
   title = 'Membership Form';
   membershipForm = new FormGroup({
     name: new FormControl("", [Validators.required]),
@@ -21,7 +23,9 @@ export class MembershipFormComponent {
     phone: new FormControl("", [Validators.required]),
     address: new FormControl("", [Validators.required]),
     pincode: new FormControl("", [Validators.required]),
-    function_date: new FormControl("", [Validators.required])
+    function_date: new FormControl("", [Validators.required]),
+    package_plan: new FormControl(this.package_plan),
+    package_price: new FormControl(this.package_price)
   });
   apiURL = environment.apiURL;
   loading = false;
@@ -37,6 +41,14 @@ export class MembershipFormComponent {
       }
       console.log(this.disabledDates);
     })
+  }
+
+  ngOnChanges() {
+    this.membershipForm.patchValue({
+      package_plan: this.package_plan,
+      package_price: this.package_price
+    });
+    this.membershipForm.updateValueAndValidity();
   }
   
   onCreate() {
