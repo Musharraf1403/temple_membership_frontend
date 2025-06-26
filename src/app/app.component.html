@@ -111,7 +111,7 @@
     <div class="gallery-section" id="gallery">
       <div class="title">Our Gallery</div>
       <div class="images">
-        <p-carousel [value]="images" [numVisible]="2" [numScroll]="2" [responsiveOptions]="responsiveOptions">
+        <p-carousel autoplayInterval="3000" [value]="images" [numVisible]="2" [numScroll]="2" [responsiveOptions]="responsiveOptions">
           <ng-template pTemplate="item" let-item>
             <img [src]="item.itemImageSrc" class="gallery-image" />
           </ng-template>
