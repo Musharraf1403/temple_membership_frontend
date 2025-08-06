@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ImportsModule } from './imports';
 import { MembershipFormComponent } from './membership-form/membership-form.component';
+import { SanityService } from './services/sanity.service';
 
 
 @Component({
@@ -16,19 +17,6 @@ export class AppComponent {
   package_plan;
   package_price;
   openForm = false;
-  images = [{
-    itemImageSrc: "../assets/images/about-us.png"
-  }, {
-    itemImageSrc: "../assets/images/about-us.png"
-  }, {
-    itemImageSrc: "../assets/images/about-us.png"
-  }, {
-    itemImageSrc: "../assets/images/about-us.png"
-  }, {
-    itemImageSrc: "../assets/images/about-us.png"
-  }, {
-    itemImageSrc: "../assets/images/about-us.png"
-  }];
   responsiveOptions = [
     {
       breakpoint: '1400px',
@@ -51,12 +39,29 @@ export class AppComponent {
       numScroll: 1
     }
   ];
+  landingPageContent;
 
   sidebarVisible1 = false;
+  heroSectionImage;
+  aboutUsSectionImage;
+  galleryImages = [];
+
+  constructor(private sanityService: SanityService){}
+
+  ngOnInit(){
+    this.sanityService.fetchContent().then((data)=>{
+      this.landingPageContent = data[0];
+      this.heroSectionImage = this.sanityService.urlFor(this.landingPageContent.hero_section.hero_section_image);
+      this.aboutUsSectionImage = this.sanityService.urlFor(this.landingPageContent.about_us_section.about_section_image);
+      for(let image of this.landingPageContent.gallery_section.gallery_images) {
+        this.galleryImages.push(this.sanityService.urlFor(image));
+      }
+    })
+  }
 
   onClickSubscribe(plan, price) {
     this.openForm = true;
-    this.package_plan = plan;
+    this.package_plan = plan === 'Yearly Temple Scheme' ? 'yearly' : 'monthly';
     this.package_price = price;
   }
 
