@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ImportsModule } from './imports';
 import { MembershipFormComponent } from './membership-form/membership-form.component';
 import { SanityService } from './services/sanity.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -46,16 +47,26 @@ export class AppComponent {
   aboutUsSectionImage;
   galleryImages = [];
 
-  constructor(private sanityService: SanityService){}
+  constructor(private sanityService: SanityService, private router: ActivatedRoute) { }
 
-  ngOnInit(){
-    this.sanityService.fetchContent().then((data)=>{
+  ngOnInit() {
+    this.router.queryParams.subscribe(params => {
+      if (params['form'] && params['form'] === 'true') {
+        this.openForm = true;
+      }
+    });
+    this.sanityService.fetchContent().then((data) => {
       this.landingPageContent = data[0];
       this.heroSectionImage = this.sanityService.urlFor(this.landingPageContent.hero_section.hero_section_image);
       this.aboutUsSectionImage = this.sanityService.urlFor(this.landingPageContent.about_us_section.about_section_image);
-      for(let image of this.landingPageContent.gallery_section.gallery_images) {
+      for (let image of this.landingPageContent.gallery_section.gallery_images) {
         this.galleryImages.push(this.sanityService.urlFor(image));
       }
+      this.router.queryParams.subscribe(params => {
+        if (params['form'] && params['form'] === 'true') {
+          this.openForm = true;
+        }
+      });
     })
   }
 
