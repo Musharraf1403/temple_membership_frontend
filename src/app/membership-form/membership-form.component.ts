@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -16,6 +16,7 @@ import { ImportsModule } from '../imports';
 export class MembershipFormComponent {
   @Input() package_plan: string = 'yearly';
   @Input() package_price: number = 101;
+  @Output() closeForm: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   title = 'Membership Form';
   membershipForm = new FormGroup({
     name: new FormControl("", [Validators.required]),
@@ -35,11 +36,10 @@ export class MembershipFormComponent {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.http.get(`${this.apiURL}/api/membership/getBlockedDates`).subscribe((value:any)=>{
-      for(let date of value.blocked_dates) {
+    this.http.get(`${this.apiURL}/api/membership/getBlockedDates`).subscribe((value: any) => {
+      for (let date of value.blocked_dates) {
         this.disabledDates.push(new Date(date))
       }
-      console.log(this.disabledDates);
     })
   }
 
@@ -50,7 +50,7 @@ export class MembershipFormComponent {
     });
     this.membershipForm.updateValueAndValidity();
   }
-  
+
   onCreate() {
     if (this.membershipForm.valid) {
       this.loading = true;
@@ -58,6 +58,10 @@ export class MembershipFormComponent {
         (value: any) => {
           this.loading = false;
           this.showSuccess(value.message);
+          setTimeout(() => {
+            this.membershipForm.reset();
+            this.closeForm.emit(true);
+          }, 1000);
         }, (error) => {
           this.loading = false;
           this.showError(error.error.message);

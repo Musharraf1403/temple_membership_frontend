@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="subscribe-now">
-          <button (click)="onClickSubscribe('plan.scheme_title', plan.price)">Subscribe now</button>
+          <button (click)="onClickSubscribe(plan.scheme_title, plan.price)">Subscribe now</button>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@
 </div>
 
 <p-dialog [modal]="true" [(visible)]="openForm" class="dialog-box">
-  <app-membership-form [package_plan]="package_plan" [package_price]="package_price"></app-membership-form>
+  <app-membership-form [package_plan]="package_plan" [package_price]="package_price" (closeForm)="onCloseForm($event)"></app-membership-form>
 </p-dialog>
 
 <p-sidebar [(visible)]="sidebarVisible1" position="right">

@@ -86,4 +86,8 @@ export class AppComponent {
     this.sidebarVisible1 = false;
   }
 
+  onCloseForm(event: boolean) {
+    this.openForm = !event;
+  }
+
 }
