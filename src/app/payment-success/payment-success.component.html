@@ -1,0 +1,106 @@
+<div class="container">
+  <p-toast />
+
+  <div *ngIf="loading" class="flex justify-content-center align-items-center" style="height: 400px;">
+    <p-progressSpinner />
+  </div>
+
+  <div *ngIf="error && !loading" class="card p-4 text-center">
+    <div class="mb-3">
+      <i class="pi pi-exclamation-circle text-red-500" style="font-size: 3rem;"></i>
+    </div>
+    <h2 class="text-red-500">Error</h2>
+    <p>{{ error }}</p>
+    <p-button label="Redirecting to Home..." severity="secondary" [disabled]="true" />
+  </div>
+
+  <div *ngIf="sessionDetails && !loading" class="card p-5">
+    <!-- Success Header -->
+    <div class="text-center mb-5">
+      <i class="pi pi-check-circle text-green-500" style="font-size: 4rem;"></i>
+      <h1 class="mt-3 mb-2">Payment Successful!</h1>
+      <p class="text-gray-600">Thank you for your membership subscription</p>
+    </div>
+
+    <!-- Email Notification Message -->
+    <div class="bg-blue-50 border-1 border-blue-200 border-round p-4 mb-5">
+      <div class="flex gap-3">
+        <i class="pi pi-envelope text-blue-600" style="font-size: 1.5rem;"></i>
+        <div>
+          <h4 class="mt-0 mb-2 text-blue-700">Membership Card Sent</h4>
+          <p class="m-0 text-blue-600">
+            We've sent your membership ID card and welcome letter to <strong>{{ sessionDetails.member.email }}</strong>. 
+            Please check your email (and spam folder) for the membership details.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transaction Details -->
+    <div class="grid mb-5">
+      <div class="col-12 md:col-6">
+        <div class="surface-section p-4 border-round">
+          <h3 class="mb-3">Transaction Details</h3>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Transaction ID:</span>
+            <p class="mt-1 font-mono text-sm">{{ sessionDetails.paymentIntent }}</p>
+          </div>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Amount:</span>
+            <p class="mt-1 text-xl font-bold text-green-600">
+              {{ sessionDetails.currency.toUpperCase() }} {{ sessionDetails.amount | number: '1.2-2' }}
+            </p>
+          </div>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Payment Status:</span>
+            <p class="mt-1">
+              <p-tag
+                [value]="sessionDetails.paymentStatus"
+                [severity]="sessionDetails.paymentStatus === 'succeeded' ? 'success' : 'warning'"
+              />
+            </p>
+          </div>
+          <div>
+            <span class="text-gray-600 font-semibold">Date:</span>
+            <p class="mt-1">{{ sessionDetails.created | date: 'medium' }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member Details -->
+      <div class="col-12 md:col-6">
+        <div class="surface-section p-4 border-round">
+          <h3 class="mb-3">Member Information</h3>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Name:</span>
+            <p class="mt-1">{{ sessionDetails.member.name }}</p>
+          </div>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Email:</span>
+            <p class="mt-1">{{ sessionDetails.member.email }}</p>
+          </div>
+          <div class="mb-3">
+            <span class="text-gray-600 font-semibold">Membership ID:</span>
+            <p class="mt-1">{{ sessionDetails.member.membership_id }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex gap-3 justify-content-center flex-wrap">
+      <p-button
+        label="Download Receipt"
+        icon="pi pi-download"
+        severity="info"
+        (onClick)="downloadReceipt()"
+      />
+      <p-button
+        label="Go to Home"
+        icon="pi pi-home"
+        severity="success"
+        (onClick)="goHome()"
+      />
+    </div>
+  </div>
+</div>

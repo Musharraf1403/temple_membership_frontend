@@ -20,11 +20,19 @@
         <textarea rows="5" cols="30" pInputTextarea formControlName="address"></textarea>
       </div>
       <div class="flex flex-column gap-2">
-        <label for="phone" class="font-bold">Pincode</label>
-        <input pInputText id="phone" aria-describedby="pincode" formControlName="pincode" />
+        <label for="pincode" class="font-bold">Pincode</label>
+        <input pInputText id="pincode" aria-describedby="pincode" formControlName="pincode" />
       </div>
       <div class="flex flex-column gap-2">
-        <label for="phone" class="font-bold">Function Date</label>
+        <label for="plan" class="font-bold">Plan</label>
+        <input pInputText id="plan" aria-describedby="plan" formControlName="package_plan" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="price" class="font-bold">Price</label>
+        <input pInputText id="price" aria-describedby="price" formControlName="package_price" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="function_date" class="font-bold">Function Date</label>
         <p-calendar [minDate]="minDate" [maxDate]="maxDate" formControlName="function_date" [disabledDates]="disabledDates" />
       </div>
       <div class="card flex justify-content-center">

@@ -25,8 +25,8 @@ export class MembershipFormComponent {
     address: new FormControl("", [Validators.required]),
     pincode: new FormControl("", [Validators.required]),
     function_date: new FormControl("", [Validators.required]),
-    package_plan: new FormControl(this.package_plan),
-    package_price: new FormControl(this.package_price)
+    package_plan: new FormControl({value: this.package_plan, disabled: true}),
+    package_price: new FormControl({value: this.package_price, disabled: true}),
   });
   apiURL = environment.apiURL;
   loading = false;
@@ -54,10 +54,10 @@ export class MembershipFormComponent {
   onCreate() {
     if (this.membershipForm.valid) {
       this.loading = true;
-      this.http.post(`${this.apiURL}/api/membership`, this.membershipForm.value).subscribe(
+      this.http.post(`${this.apiURL}/api/membership`, this.membershipForm.getRawValue()).subscribe(
         (value: any) => {
+          window.open(value.url);
           this.loading = false;
-          this.showSuccess(value.message);
           setTimeout(() => {
             this.membershipForm.reset();
             this.closeForm.emit(true);

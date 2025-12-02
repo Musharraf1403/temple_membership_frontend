@@ -1,0 +1,18 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.font-mono {
+  font-family: 'Courier New', monospace;
+}
+
+.surface-section {
+  background-color: var(--surface-section, #f8f9fa);
+  border: 1px solid var(--surface-border, #e0e0e0);
+}
+
+p-tag {
+  display: inline-block;
+}

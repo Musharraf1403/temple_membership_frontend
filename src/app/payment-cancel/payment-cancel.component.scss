@@ -1,0 +1,39 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.surface-section {
+  background-color: var(--surface-section, #f8f9fa);
+  border: 1px solid var(--surface-border, #e0e0e0);
+}
+
+.bg-red-50 {
+  background-color: #fef2f2;
+}
+
+.border-red-200 {
+  border-color: #fecaca;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+.text-red-700 {
+  color: #b91c1c;
+}
+
+.pi-exclamation-triangle {
+  color: #dc2626;
+}
+
+p-button {
+  ::ng-deep {
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+}
+

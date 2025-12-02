@@ -13,6 +13,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { SidebarModule } from 'primeng/sidebar';
     GalleriaModule,
     CarouselModule,
     DialogModule,
-    SidebarModule
+    SidebarModule,
+    ProgressSpinnerModule,
+    TagModule
   ],
   exports: [
     CommonModule,
@@ -45,7 +49,9 @@ import { SidebarModule } from 'primeng/sidebar';
     GalleriaModule,
     CarouselModule,
     DialogModule,
-    SidebarModule
+    SidebarModule,
+    ProgressSpinnerModule,
+    TagModule
 
   ],
   providers: [  ]
