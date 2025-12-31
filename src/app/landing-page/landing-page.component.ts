@@ -92,4 +92,19 @@ export class LandingPageComponent {
     this.openForm = !event;
   }
 
+  convertToWhatsAppNumber(rawNumber: string): string {
+  if (!rawNumber) return '';
+
+  return rawNumber
+    .replace(/\(0\)/g, '')   // remove (0)
+    .replace(/\D/g, '');     // remove non-digits
+}
+
+  onClickMobileNumber(mobileNumber: string) {
+    window.open(`https://wa.me/${this.convertToWhatsAppNumber(mobileNumber)}`, '_blank');
+  }
+
+  onClickEmail(emailId: string) {
+    window.location.href = `mailto:${emailId}`;
+  }
 }

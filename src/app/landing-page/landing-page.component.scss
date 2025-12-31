@@ -309,7 +309,6 @@
 
             background-color: #0F4F2F;
             border-radius: 2rem;
-            background-image: url("../../assets/images/plans.png");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -589,6 +588,12 @@
                                 }
                                 color: #6B6B6B;
                                 word-break: break-all;
+                            }
+                            .mobile-number, .email-id {
+                                cursor: pointer;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
