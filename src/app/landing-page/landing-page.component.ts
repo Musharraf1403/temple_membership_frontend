@@ -51,9 +51,13 @@ export class LandingPageComponent {
 
   ngOnInit() {
     this.router.queryParams.subscribe(params => {
-      if (params['form'] && params['form'] === 'true') {
+      if (params['plan'] && params['plan'] === 'monthly') {
         this.package_plan = 'monthly';
         this.package_price = 21;
+        this.openForm = true;
+      } else if (params['plan'] && params['plan'] === 'yearly') {
+        this.package_plan = 'yearly';
+        this.package_price = 210;
         this.openForm = true;
       }
     });
@@ -93,12 +97,12 @@ export class LandingPageComponent {
   }
 
   convertToWhatsAppNumber(rawNumber: string): string {
-  if (!rawNumber) return '';
+    if (!rawNumber) return '';
 
-  return rawNumber
-    .replace(/\(0\)/g, '')   // remove (0)
-    .replace(/\D/g, '');     // remove non-digits
-}
+    return rawNumber
+      .replace(/\(0\)/g, '')   // remove (0)
+      .replace(/\D/g, '');     // remove non-digits
+  }
 
   onClickMobileNumber(mobileNumber: string) {
     window.open(`https://wa.me/${this.convertToWhatsAppNumber(mobileNumber)}`, '_blank');
