@@ -7,7 +7,8 @@
       </div>
       <div class="header-nav-links">
         <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
-  </div>
+        <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
+      </div>
       <div class="header-menu" (click)="sidebarVisible1 = true">
         <i class="pi pi-bars"></i>
       </div>
@@ -155,8 +156,13 @@
   <app-membership-form [package_plan]="package_plan" [package_price]="package_price" (closeForm)="onCloseForm($event)"></app-membership-form>
 </p-dialog>
 
+<p-dialog [modal]="true" [(visible)]="openDonationForm" class="dialog-box">
+  <app-donation-form (closeForm)="onCloseDonationForm($event)"></app-donation-form>
+</p-dialog>
+
 <p-sidebar [(visible)]="sidebarVisible1" position="right">
   <div class="header-side-nav-links">
     <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+    <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
   </div>
 </p-sidebar>

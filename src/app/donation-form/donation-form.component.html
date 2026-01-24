@@ -1,0 +1,32 @@
+<div class="container flex flex-column gap-3">
+  <div class="header">
+    Donation Form
+  </div>
+  <div class="form flex flex-column gap-2" [formGroup]="donationForm">
+    <div class="flex flex-column gap-2">
+      <label for="name" class="font-bold">Name</label>
+      <input pInputText id="name" aria-describedby="name-help" formControlName="name" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="email" class="font-bold">Email</label>
+      <input pInputText id="email" aria-describedby="email-help" formControlName="email" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="phone" class="font-bold">Phone No.</label>
+      <input pInputText id="phone" aria-describedby="phone" formControlName="phone" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="amount" class="font-bold">Donation Amount (£)</label>
+      <input pInputText id="amount" aria-describedby="amount" type="number" formControlName="amount" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="message" class="font-bold">Message (Optional)</label>
+      <textarea rows="4" cols="30" pInputTextarea formControlName="message" placeholder="Share your thoughts or prayers..."></textarea>
+    </div>
+    <div class="card flex justify-content-center">
+      <p-button *ngIf="!loading" label="Donate" (onClick)="onDonate()" />
+      <p-button *ngIf="loading" label="Processing" />
+    </div>
+  </div>
+</div>
+<p-toast />

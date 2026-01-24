@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ImportsModule } from '../imports';
 import { MembershipFormComponent } from '../membership-form/membership-form.component';
+import { DonationFormComponent } from '../donation-form/donation-form.component';
 import { SanityService } from '../services/sanity.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [ImportsModule, MembershipFormComponent],
+  imports: [ImportsModule, MembershipFormComponent, DonationFormComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
   providers: []
@@ -18,6 +19,7 @@ export class LandingPageComponent {
   package_plan;
   package_price;
   openForm = false;
+  openDonationForm = false;
   responsiveOptions = [
     {
       breakpoint: '1400px',
@@ -59,6 +61,8 @@ export class LandingPageComponent {
         this.package_plan = 'yearly';
         this.package_price = 210;
         this.openForm = true;
+      } else if (params['donate'] && params['donate'] === 'true') {
+        this.openDonationForm = true;
       }
     });
     this.sanityService.fetchContent().then((data) => {
@@ -82,6 +86,10 @@ export class LandingPageComponent {
     this.package_price = price;
   }
 
+  onClickDonate() {
+    this.openDonationForm = true;
+  }
+
   navigateToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -90,6 +98,10 @@ export class LandingPageComponent {
 
     // Close sidebar
     this.sidebarVisible1 = false;
+  }
+
+  onCloseDonationForm(event: boolean) {
+    this.openDonationForm = !event;
   }
 
   onCloseForm(event: boolean) {
