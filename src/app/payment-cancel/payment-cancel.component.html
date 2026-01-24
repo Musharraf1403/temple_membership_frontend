@@ -9,83 +9,69 @@
       <p class="text-gray-600">Your payment was not completed</p>
     </div>
 
-    <!-- Too Many Attempts Message -->
-    <div *ngIf="tooManyAttempts" class="bg-red-50 border-1 border-red-200 border-round p-4 mb-5">
-      <div class="flex gap-3 align-items-start">
-        <i class="pi pi-exclamation-triangle text-red-600" style="font-size: 1.5rem; margin-top: 0.5rem;"></i>
-        <div class="text-left">
-          <h4 class="mt-0 mb-2 text-red-700">Too Many Payment Attempts</h4>
-          <p class="m-0 text-red-600">
-            You have exceeded the maximum number of payment attempts. For security reasons, please contact our representative for further assistance.
-          </p>
-          <p class="mt-2 mb-0 text-red-600 font-semibold">📞 Please reach out to our support team for help.</p>
+    <!-- Cancellation Details -->
+    <div *ngIf="pendingDetails && !loading" class="surface-section p-4 border-round mb-5">
+      <!-- Email Notification Message -->
+      <div class="bg-blue-50 border-1 border-blue-200 border-round p-4 mb-5">
+        <div class="flex gap-3">
+          <i class="pi pi-envelope text-blue-600" style="font-size: 1.5rem;"></i>
+          <div>
+            <h4 class="mt-0 mb-2 text-blue-700">Cancellation Confirmation Sent</h4>
+            <p class="m-0 text-blue-600">
+              We've sent a cancellation confirmation email to <strong>{{ pendingDetails.member?.email }}</strong>. 
+              Please check your email for the details.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Default Cancel Message -->
-    <div *ngIf="!tooManyAttempts" class="surface-section p-4 border-round mb-5">
-      <p class="text-gray-700">
-        Your membership payment has been cancelled. If this was unintentional, you can retry the payment below or return to the home page.
-      </p>
-    </div>
-
-    <!-- Pending Membership Details -->
-    <div *ngIf="pendingDetails && !tooManyAttempts" class="grid mb-5">
-      <div class="col-12">
-        <div class="surface-section p-4 border-round">
-          <h3 class="mb-3">Your Membership Details</h3>
-          <div class="grid">
-            <div class="col-12 md:col-6">
-              <div class="mb-3">
-                <span class="text-gray-600 font-semibold">Name:</span>
-                <p class="mt-1">{{ pendingDetails.name }}</p>
-              </div>
-              <div class="mb-3">
-                <span class="text-gray-600 font-semibold">Email:</span>
-                <p class="mt-1">{{ pendingDetails.email }}</p>
-              </div>
-              <div class="mb-3">
-                <span class="text-gray-600 font-semibold">Membership ID:</span>
-                <p class="mt-1 font-mono text-sm">{{ pendingDetails.membership_id }}</p>
-              </div>
+      <!-- Details -->
+      <div class="grid mb-5">
+        <div class="col-12 md:col-6">
+          <div class="surface-section p-4 border-round">
+            <h3 class="mb-3">Registration Details</h3>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Transaction ID:</span>
+              <p class="mt-1">{{ pendingDetails.paymentIntent }}</p>
             </div>
-            <div class="col-12 md:col-6">
-              <div class="mb-3">
-                <span class="text-gray-600 font-semibold">Status:</span>
-                <p class="mt-1">
-                  <p-tag
-                    [value]="pendingDetails.payment_status || 'Pending'"
-                    [severity]="pendingDetails.payment_status === 'Completed' ? 'success' : 'warning'"
-                  />
-                </p>
-              </div>
-              <div class="mb-3">
-                <span class="text-gray-600 font-semibold">Approval Status:</span>
-                <p class="mt-1">
-                  <p-tag
-                    [value]="pendingDetails.approved ? 'Approved' : 'Pending Approval'"
-                    [severity]="pendingDetails.approved ? 'success' : 'info'"
-                  />
-                </p>
-              </div>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Amount:</span>
+              <p class="mt-1 text-xl font-bold text-red-600">£{{ pendingDetails.amount }}</p>
+            </div>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Status:</span>
+              <p class="mt-1">{{ pendingDetails.paymentStatus || 'Cancelled' }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6">
+          <div class="surface-section p-4 border-round">
+            <h3 class="mb-3">Your Information</h3>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Name:</span>
+              <p class="mt-1">{{ pendingDetails.member?.name }}</p>
+            </div>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Email:</span>
+              <p class="mt-1">{{ pendingDetails.member?.email }}</p>
+            </div>
+            <div class="mb-3">
+              <span class="text-gray-600 font-semibold">Phone:</span>
+              <p class="mt-1">{{ pendingDetails.member?.phone }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div *ngIf="!loading && !pendingDetails" class="surface-section p-4 border-round mb-5">
+      <p class="text-gray-700">
+        Your payment has been cancelled. You can return to the home page or try again.
+      </p>
+    </div>
+
     <!-- Action Buttons -->
     <div class="flex gap-3 justify-content-center flex-wrap">
-      <p-button
-        *ngIf="!tooManyAttempts"
-        label="Retry Payment"
-        icon="pi pi-refresh"
-        severity="warning"
-        [loading]="retrying"
-        [disabled]="retrying"
-        (onClick)="retryPayment()"
-      />
       <p-button
         label="Go to Home"
         icon="pi pi-home"

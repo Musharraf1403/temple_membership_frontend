@@ -665,4 +665,48 @@
   transition: background-color 0.3s ease;
   font-size: 16px;
   font-weight: 500;
+
+  &:hover,
+  &:focus {
+    background-color: #e64a00;
+  }
+}
+
+.event-link {
+  background-color: #0F4B2D;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    background-color: #0a3620;
+  }
+}
+
+.event-dialog {
+  ::ng-deep {
+    .p-dialog {
+      max-width: 95vw !important;
+      width: 95vw !important;
+
+      .p-dialog-content {
+        padding: 1.5rem !important;
+      }
+
+      @media (min-width: 768px) {
+        max-width: 90vw !important;
+        width: 90vw !important;
+      }
+
+      @media (min-width: 1024px) {
+        max-width: 1000px !important;
+        width: 1000px !important;
+      }
+    }
+  }
 }

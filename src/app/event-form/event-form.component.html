@@ -1,0 +1,114 @@
+<div class="event-form-container">
+  <!-- Step 1: Filter Selection -->
+  <div *ngIf="!showForm" class="step-one">
+    <div class="modal-header">
+      <div class="header">Select your choice</div>
+    </div>
+    
+    <div class="filter-section">
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" [value]="'date'" [(ngModel)]="selectedFilterType" (change)="onFilterChange('date')">
+          <span class="radio-circle"></span>
+          <span class="radio-label">Select by date</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" [value]="'rasi'" [(ngModel)]="selectedFilterType" (change)="onFilterChange('rasi')">
+          <span class="radio-circle"></span>
+          <span class="radio-label">Select by Raasi</span>
+        </label>
+      </div>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" [value]="'star'" [(ngModel)]="selectedFilterType" (change)="onFilterChange('star')">
+          <span class="radio-circle"></span>
+          <span class="radio-label">Select by Natchathiram</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" [value]="'event'" [(ngModel)]="selectedFilterType" (change)="onFilterChange('event')">
+          <span class="radio-circle"></span>
+          <span class="radio-label">Select by Special Events</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="cards-section">
+      <div 
+        class="event-card" 
+        *ngFor="let day of filteredDays"
+        [class.selected]="selectedDay?.roju === day.roju"
+        (click)="onSelectDay(day)">
+        <!-- Show only Date -->
+        <div *ngIf="selectedFilterType === 'date'">
+          <div class="card-title">{{ day.thedi }}</div>
+        </div>
+
+        <!-- Show Star with Date -->
+        <div *ngIf="selectedFilterType === 'star'">
+          <div class="card-title">{{ day.nakshatram }}</div>
+          <div class="card-subtitle">{{ day.thedi }}</div>
+        </div>
+
+        <!-- Show Rasi with Date -->
+        <div *ngIf="selectedFilterType === 'rasi'">
+          <div class="card-title">{{ day.rasi }}</div>
+          <div class="card-subtitle">{{ day.thedi }}</div>
+        </div>
+
+        <!-- Show Special Events with Date -->
+        <div *ngIf="selectedFilterType === 'event'">
+          <div class="card-title" *ngIf="day.visheshaalu">{{ day.visheshaalu }}</div>
+          <div class="card-subtitle">{{ day.thedi }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="next-btn" (click)="onNext()" [disabled]="!selectedDay">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Event Form -->
+  <div *ngIf="showForm" class="step-two">
+    <div class="modal-header">
+      <div class="header">Complete Your Details</div>
+    </div>
+    
+    <div class="selected-date-info">
+      <div class="info-item">
+        <span class="label">Selected Date:</span>
+        <span class="value">{{ selectedDay?.thedi }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Amount:</span>
+        <span class="value">£101</span>
+      </div>
+    </div>
+
+    <div class="form" [formGroup]="eventForm">
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input pInputText id="name" formControlName="name" />
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input pInputText id="email" formControlName="email" />
+      </div>
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone No.</label>
+        <input pInputText id="phone" formControlName="phone" />
+      </div>
+      <div class="form-group">
+        <label for="address" class="form-label">Address</label>
+        <textarea rows="3" pInputTextarea id="address" formControlName="address"></textarea>
+      </div>
+    </div>
+
+    <div class="form-buttons">
+      <button class="back-btn" (click)="onBack()">Back</button>
+      <button class="submit-btn" *ngIf="!loading" (click)="onSubmit()">Submit</button>
+      <button class="submit-btn" *ngIf="loading" disabled>Processing</button>
+    </div>
+  </div>
+</div>
+<p-toast />

@@ -46,8 +46,9 @@ export class PaymentSuccessComponent implements OnInit {
   fetchSessionDetails() {
     this.loading = true;
     this.error = null;
+    
     this.httpClient
-      .get<any>(`${this.apiURL}/api/membership/session/${this.sessionId}`)
+      .get<any>(`${this.apiURL}/api/session/${this.sessionId}`)
       .subscribe({
         next: (response) => {
           this.sessionDetails = response;
@@ -55,7 +56,7 @@ export class PaymentSuccessComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Payment Successful',
-            detail: 'Thank you for your membership!',
+            detail: 'Thank you for your registration!',
             life: 5000
           });
         },
@@ -80,31 +81,24 @@ export class PaymentSuccessComponent implements OnInit {
   downloadReceipt() {
     if (!this.sessionDetails) return;
     
-    // Generate a simple text-based receipt
     const receiptContent = `
-MEMBERSHIP PAYMENT RECEIPT
+PAYMENT RECEIPT
 ================================
 
-Thank You for Your Membership!
+Thank You for Your Registration!
 
 PAYMENT DETAILS
 --------------
-Session ID: ${this.sessionDetails.sessionId}
-Amount: ${this.sessionDetails.currency.toUpperCase()} ${this.sessionDetails.amount}
-Payment Status: ${this.sessionDetails.paymentStatus}
-Date: ${new Date(this.sessionDetails.created).toLocaleDateString()}
+Session ID: ${this.sessionId}
+Amount: £${this.sessionDetails.amount}
+Payment Status: ${this.sessionDetails.paymentStatus || 'Completed'}
+Date: ${new Date().toLocaleDateString()}
 
 MEMBER DETAILS
 --------------
-Name: ${this.sessionDetails.member.name}
-Email: ${this.sessionDetails.member.email}
-Membership ID: ${this.sessionDetails.member.membership_id}
-
-MEMBERSHIP INFORMATION
----------------------
-Approval Date: ${new Date(this.sessionDetails.member.approval_date).toLocaleDateString()}
-Expiry Date: ${new Date(this.sessionDetails.member.expiry_date).toLocaleDateString()}
-Status: ${this.sessionDetails.member.payment_status}
+Name: ${this.sessionDetails.member?.name || 'N/A'}
+Email: ${this.sessionDetails.member?.email || 'N/A'}
+Phone: ${this.sessionDetails.member?.phone || 'N/A'}
 
 Thank you for your support!
     `;
@@ -113,7 +107,7 @@ Thank you for your support!
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `receipt-${this.sessionDetails.sessionId}.txt`;
+    a.download = `receipt-${this.sessionId}.txt`;
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
@@ -127,3 +121,4 @@ Thank you for your support!
     });
   }
 }
+

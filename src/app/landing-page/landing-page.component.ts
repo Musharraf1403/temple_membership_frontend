@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ImportsModule } from '../imports';
 import { MembershipFormComponent } from '../membership-form/membership-form.component';
 import { DonationFormComponent } from '../donation-form/donation-form.component';
+import { EventFormComponent } from '../event-form/event-form.component';
 import { SanityService } from '../services/sanity.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [ImportsModule, MembershipFormComponent, DonationFormComponent],
+  imports: [ImportsModule, MembershipFormComponent, DonationFormComponent, EventFormComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
   providers: []
@@ -20,6 +21,7 @@ export class LandingPageComponent {
   package_price;
   openForm = false;
   openDonationForm = false;
+  openEventForm = false;
   responsiveOptions = [
     {
       breakpoint: '1400px',
@@ -90,6 +92,10 @@ export class LandingPageComponent {
     this.openDonationForm = true;
   }
 
+  onClickEvent() {
+    this.openEventForm = true;
+  }
+
   navigateToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -102,6 +108,10 @@ export class LandingPageComponent {
 
   onCloseDonationForm(event: boolean) {
     this.openDonationForm = !event;
+  }
+
+  onCloseEventForm(event: boolean) {
+    this.openEventForm = !event;
   }
 
   onCloseForm(event: boolean) {

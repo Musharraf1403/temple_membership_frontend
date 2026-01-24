@@ -14,12 +14,13 @@
     <p-button label="Redirecting to Home..." severity="secondary" [disabled]="true" />
   </div>
 
+  <!-- Registration Success -->
   <div *ngIf="sessionDetails && !loading" class="card p-5">
     <!-- Success Header -->
     <div class="text-center mb-5">
       <i class="pi pi-check-circle text-green-500" style="font-size: 4rem;"></i>
       <h1 class="mt-3 mb-2">Payment Successful!</h1>
-      <p class="text-gray-600">Thank you for your membership subscription</p>
+      <p class="text-gray-600">Thank you for your registration</p>
     </div>
 
     <!-- Email Notification Message -->
@@ -27,42 +28,31 @@
       <div class="flex gap-3">
         <i class="pi pi-envelope text-blue-600" style="font-size: 1.5rem;"></i>
         <div>
-          <h4 class="mt-0 mb-2 text-blue-700">Membership Card Sent</h4>
+          <h4 class="mt-0 mb-2 text-blue-700">Confirmation Email Sent</h4>
           <p class="m-0 text-blue-600">
-            We've sent your membership ID card and welcome letter to <strong>{{ sessionDetails.member.email }}</strong>. 
-            Please check your email (and spam folder) for the membership details.
+            We've sent a confirmation email with your registration details to <strong>{{ sessionDetails.member?.email }}</strong>. 
+            Please check your email (and spam folder) for the details.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Transaction Details -->
+    <!-- Registration Details -->
     <div class="grid mb-5">
       <div class="col-12 md:col-6">
         <div class="surface-section p-4 border-round">
-          <h3 class="mb-3">Transaction Details</h3>
+          <h3 class="mb-3">Payment Details</h3>
           <div class="mb-3">
             <span class="text-gray-600 font-semibold">Transaction ID:</span>
-            <p class="mt-1 font-mono text-sm">{{ sessionDetails.paymentIntent }}</p>
+            <p class="mt-1">{{ sessionDetails.paymentIntent }}</p>
           </div>
           <div class="mb-3">
             <span class="text-gray-600 font-semibold">Amount:</span>
-            <p class="mt-1 text-xl font-bold text-green-600">
-              {{ sessionDetails.currency.toUpperCase() }} {{ sessionDetails.amount | number: '1.2-2' }}
-            </p>
+            <p class="mt-1 text-xl font-bold text-green-600">£{{ sessionDetails.amount }}</p>
           </div>
           <div class="mb-3">
-            <span class="text-gray-600 font-semibold">Payment Status:</span>
-            <p class="mt-1">
-              <p-tag
-                [value]="sessionDetails.paymentStatus"
-                [severity]="sessionDetails.paymentStatus === 'succeeded' ? 'success' : 'warning'"
-              />
-            </p>
-          </div>
-          <div>
-            <span class="text-gray-600 font-semibold">Date:</span>
-            <p class="mt-1">{{ sessionDetails.created | date: 'medium' }}</p>
+            <span class="text-gray-600 font-semibold">Status:</span>
+            <p class="mt-1">{{ sessionDetails.paymentStatus || 'Completed' }}</p>
           </div>
         </div>
       </div>
@@ -70,18 +60,18 @@
       <!-- Member Details -->
       <div class="col-12 md:col-6">
         <div class="surface-section p-4 border-round">
-          <h3 class="mb-3">Member Information</h3>
+          <h3 class="mb-3">Your Information</h3>
           <div class="mb-3">
             <span class="text-gray-600 font-semibold">Name:</span>
-            <p class="mt-1">{{ sessionDetails.member.name }}</p>
+            <p class="mt-1">{{ sessionDetails.member?.name }}</p>
           </div>
           <div class="mb-3">
             <span class="text-gray-600 font-semibold">Email:</span>
-            <p class="mt-1">{{ sessionDetails.member.email }}</p>
+            <p class="mt-1">{{ sessionDetails.member?.email }}</p>
           </div>
           <div class="mb-3">
-            <span class="text-gray-600 font-semibold">Membership ID:</span>
-            <p class="mt-1">{{ sessionDetails.member.membership_id }}</p>
+            <span class="text-gray-600 font-semibold">Phone:</span>
+            <p class="mt-1">{{ sessionDetails.member?.phone }}</p>
           </div>
         </div>
       </div>

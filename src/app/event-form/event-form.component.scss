@@ -1,0 +1,300 @@
+.event-form-container {
+  padding: 0;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    .header {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #999;
+    }
+  }
+
+  .step-one {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .filter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .radio-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+
+        @media (max-width: 480px) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        position: relative;
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        .radio-circle {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #ddd;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+
+          &::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #D98F3E;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+        }
+
+        .radio-label {
+          font-size: 0.95rem;
+          color: #999;
+          font-weight: 400;
+          transition: color 0.3s ease;
+        }
+
+        input[type="radio"]:checked + .radio-circle {
+          border-color: #D98F3E;
+
+          &::after {
+            opacity: 1;
+          }
+        }
+
+        input[type="radio"]:checked ~ .radio-label {
+          color: #D98F3E;
+        }
+
+        &:hover .radio-label {
+          color: #666;
+        }
+      }
+    }
+
+    .cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      min-height: 200px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .event-card {
+        background: white;
+        border: 2px solid #f0f0f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 120px;
+
+        &:hover {
+          border-color: #D98F3E;
+          box-shadow: 0 2px 8px rgba(217, 143, 62, 0.1);
+        }
+
+        &.selected {
+          border-color: #D98F3E;
+          background: #fffaf5;
+          box-shadow: 0 2px 12px rgba(217, 143, 62, 0.15);
+        }
+
+        .card-title {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+          font-size: 0.85rem;
+          color: #999;
+        }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+
+      .next-btn {
+        background-color: #D98F3E;
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover:not(:disabled) {
+          background-color: #c87e35;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .step-two {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .selected-date-info {
+      background: #f9f9f9;
+      border-left: 4px solid #D98F3E;
+      padding: 1rem;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .label {
+          font-weight: 600;
+          color: #333;
+          font-size: 0.95rem;
+        }
+
+        .value {
+          color: #666;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: white;
+      padding: 0;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .form-label {
+          font-weight: 600;
+          color: #333;
+          font-size: 0.95rem;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          font-size: 0.95rem;
+          font-family: inherit;
+          transition: all 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #D98F3E;
+            box-shadow: 0 0 0 3px rgba(217, 143, 62, 0.1);
+          }
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 80px;
+        }
+      }
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+
+      @media (max-width: 480px) {
+        flex-direction: column-reverse;
+      }
+
+      .back-btn {
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #e0e0e0;
+          border-color: #ccc;
+        }
+      }
+
+      .submit-btn {
+        background-color: #D98F3E;
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover:not(:disabled) {
+          background-color: #c87e35;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

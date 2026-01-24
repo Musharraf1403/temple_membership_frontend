@@ -7,6 +7,7 @@
       </div>
       <div class="header-nav-links">
         <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+        <div class="header-link event-link" (click)="onClickEvent()">48 Days Event</div>
         <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
       </div>
       <div class="header-menu" (click)="sidebarVisible1 = true">
@@ -160,9 +161,14 @@
   <app-donation-form (closeForm)="onCloseDonationForm($event)"></app-donation-form>
 </p-dialog>
 
+<p-dialog [modal]="true" header="48-Day Mandala Abhishekam Registration" [(visible)]="openEventForm" class="dialog-box event-dialog">
+  <app-event-form (closeForm)="onCloseEventForm($event)"></app-event-form>
+</p-dialog>
+
 <p-sidebar [(visible)]="sidebarVisible1" position="right">
   <div class="header-side-nav-links">
     <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+    <div class="header-link event-link" (click)="onClickEvent()">48 Days Event</div>
     <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
   </div>
 </p-sidebar>
