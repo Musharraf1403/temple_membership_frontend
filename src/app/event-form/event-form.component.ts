@@ -128,18 +128,26 @@ export class EventFormComponent {
   onSubmit() {
     if (this.eventForm.valid && this.selectedDay) {
       this.loading = true;
+      
+      // Parse date from thedi format (e.g., "Feb 10 (Tue)") to DD-MM-YYYY format
+      const dateString = this.selectedDay.thedi.split(' (')[0]; // Get "Feb 10"
+      const parsedDate = new Date(`${dateString} 2026`); // Create date with year 2026
+      const day = String(parsedDate.getDate()).padStart(2, '0');
+      const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+      const formattedDate = `${day}-${month}-2026`;
+      
       const payload = {
         name: this.eventForm.value.name,
         email: this.eventForm.value.email,
         phone: this.eventForm.value.phone,
         address: this.eventForm.value.address,
         amount: this.eventForm.value.amount,
-        date: this.selectedDay.thedi,
+        date: formattedDate,
         rasi: this.selectedDay.rasi,
         star: this.selectedDay.nakshatram,
         specialEvent: this.selectedDay.visheshaalu || null
       };
-      this.http.post(`${this.apiURL}/api/mandalaabhishekam`, payload).subscribe(
+      this.http.post(`${this.apiURL}/api/mandalaaabhishekam`, payload).subscribe(
         (value: any) => {
           window.open(value.url, '_blank');
           this.loading = false;
