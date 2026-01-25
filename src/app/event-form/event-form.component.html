@@ -71,6 +71,9 @@
   <!-- Step 2: Event Form -->
   <div *ngIf="showForm" class="step-two">
     <div class="modal-header">
+      <button class="back-arrow-btn" (click)="onBack()" title="Go back">
+        <i class="pi pi-arrow-left"></i>
+      </button>
       <div class="header">Complete Your Details</div>
     </div>
     
@@ -78,6 +81,18 @@
       <div class="info-item">
         <span class="label">Selected Date:</span>
         <span class="value">{{ selectedDay?.thedi }}</span>
+      </div>
+      <div class="info-item" *ngIf="selectedFilterType === 'rasi'">
+        <span class="label">Raasi:</span>
+        <span class="value">{{ selectedDay?.rasi }}</span>
+      </div>
+      <div class="info-item" *ngIf="selectedFilterType === 'star'">
+        <span class="label">Natchathiram:</span>
+        <span class="value">{{ selectedDay?.nakshatram }}</span>
+      </div>
+            <div class="info-item" *ngIf="selectedFilterType === 'event'">
+        <span class="label">Special Event:</span>
+        <span class="value">{{ selectedDay?.visheshaalu }}</span>
       </div>
       <div class="info-item">
         <span class="label">Amount:</span>

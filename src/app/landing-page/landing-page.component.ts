@@ -65,6 +65,8 @@ export class LandingPageComponent {
         this.openForm = true;
       } else if (params['donate'] && params['donate'] === 'true') {
         this.openDonationForm = true;
+      } else if (params['mandalaabhishekam'] && params['mandalaabhishekam'] === 'true') {
+        this.openEventForm = true;
       }
     });
     this.sanityService.fetchContent().then((data) => {

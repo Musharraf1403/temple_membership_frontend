@@ -147,7 +147,7 @@ export class EventFormComponent {
         star: this.selectedDay.nakshatram,
         specialEvent: this.selectedDay.visheshaalu || null
       };
-      this.http.post(`${this.apiURL}/api/mandalaaabhishekam`, payload).subscribe(
+      this.http.post(`${this.apiURL}/api/mandalaabhishekam`, payload).subscribe(
         (value: any) => {
           window.open(value.url, '_blank');
           this.loading = false;
