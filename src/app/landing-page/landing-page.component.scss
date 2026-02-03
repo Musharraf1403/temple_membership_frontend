@@ -643,10 +643,16 @@
         }
 
         .p-dialog {
-            width: 500px !important;
+            width: 95vw !important;
+            max-width: 650px !important;
 
-            @media screen and (max-width: 700px) {
-                width: 400px;
+            @media screen and (max-width: 768px) {
+                width: 95vw !important;
+                max-width: none !important;
+            }
+
+            @media screen and (max-width: 640px) {
+                width: 100vw !important;
             }
         }
 
@@ -688,8 +694,67 @@
   }
 }
 
+.invitation-dialog {
+  ::ng-deep {
+    .p-dialog-header {
+      background-color: white !important;
+      color: #ff9800 !important;
+
+      .p-dialog-title {
+        color: #ff9800 !important;
+      }
+
+      .p-dialog-header-icon {
+        color: #333333 !important;
+
+        &:hover {
+          background-color: rgba(51, 51, 51, 0.1) !important;
+        }
+      }
+    }
+  }
+}
+
+.dialog-box {
+  ::ng-deep {
+    .p-dialog-header {
+      background-color: white !important;
+      color: #ff9800 !important;
+
+      .p-dialog-title {
+        color: #ff9800 !important;
+      }
+
+      .p-dialog-header-icon {
+        color: #333333 !important;
+
+        &:hover {
+          background-color: rgba(51, 51, 51, 0.1) !important;
+        }
+      }
+    }
+  }
+}
+
 .event-dialog {
   ::ng-deep {
+    .p-dialog-header {
+      background-color: white !important;
+      color: #ff9800 !important;
+
+      .p-dialog-title {
+        color: #ff9800 !important;
+      }
+
+      .p-dialog-header-icon {
+        color: #333333 !important;
+
+        &:hover {
+          background-color: rgba(51, 51, 51, 0.1) !important;
+        }
+      }
+    }
+
     .p-dialog {
       max-width: 95vw !important;
       width: 95vw !important;

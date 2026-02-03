@@ -153,11 +153,15 @@
   </div>
 </div>
 
-<p-dialog [modal]="true" [(visible)]="openForm" class="dialog-box">
+<p-dialog [modal]="true" header="Inviting you to the Maha Kumbabhishekam" [(visible)]="openMandalaabhishekamInvitation" class="dialog-box invitation-dialog">
+  <app-mandalaabhishekam-invitation (closeForm)="onCloseMandalaabhishekamInvitation($event)"></app-mandalaabhishekam-invitation>
+</p-dialog>
+
+<p-dialog [modal]="true" [header]="package_plan === 'monthly' ? 'Monthly Membership Form' : 'Yearly Membership Form'" [(visible)]="openForm" class="dialog-box">
   <app-membership-form [package_plan]="package_plan" [package_price]="package_price" (closeForm)="onCloseForm($event)"></app-membership-form>
 </p-dialog>
 
-<p-dialog [modal]="true" [(visible)]="openDonationForm" class="dialog-box">
+<p-dialog [modal]="true" header="Donation Form" [(visible)]="openDonationForm" class="dialog-box">
   <app-donation-form (closeForm)="onCloseDonationForm($event)"></app-donation-form>
 </p-dialog>
 

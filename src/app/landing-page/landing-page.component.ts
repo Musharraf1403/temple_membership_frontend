@@ -3,6 +3,7 @@ import { ImportsModule } from '../imports';
 import { MembershipFormComponent } from '../membership-form/membership-form.component';
 import { DonationFormComponent } from '../donation-form/donation-form.component';
 import { EventFormComponent } from '../event-form/event-form.component';
+import { MandalaabhishekamInvitationComponent } from '../mandalaabhishekam-invitation/mandalaabhishekam-invitation.component';
 import { SanityService } from '../services/sanity.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [ImportsModule, MembershipFormComponent, DonationFormComponent, EventFormComponent],
+  imports: [ImportsModule, MembershipFormComponent, DonationFormComponent, EventFormComponent, MandalaabhishekamInvitationComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
   providers: []
@@ -22,6 +23,7 @@ export class LandingPageComponent {
   openForm = false;
   openDonationForm = false;
   openEventForm = false;
+  openMandalaabhishekamInvitation = true;
   responsiveOptions = [
     {
       breakpoint: '1400px',
@@ -118,6 +120,10 @@ export class LandingPageComponent {
 
   onCloseForm(event: boolean) {
     this.openForm = !event;
+  }
+
+  onCloseMandalaabhishekamInvitation(event: boolean) {
+    this.openMandalaabhishekamInvitation = !event;
   }
 
   convertToWhatsAppNumber(rawNumber: string): string {

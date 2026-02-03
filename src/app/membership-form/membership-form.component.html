@@ -1,7 +1,4 @@
 <div class="container flex flex-column gap-3">
-    <div class="header">
-      {{package_plan === 'monthly' ? 'Monthly' : 'Annual'}} Membership Form
-    </div>
     <div class="form flex flex-column gap-2" [formGroup]="membershipForm">
       <div class="flex flex-column gap-2">
         <label for="username" class="font-bold">Name</label>

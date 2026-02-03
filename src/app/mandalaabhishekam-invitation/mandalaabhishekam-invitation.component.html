@@ -1,0 +1,44 @@
+<div class="mandalaabhishekam-invitation-container">
+  <div class="carousel-container">
+    <p-carousel 
+      [value]="invitations" 
+      [numVisible]="1" 
+      [numScroll]="1" 
+      [responsiveOptions]="responsiveOptions"
+      [showIndicators]="false"
+      [showNavigators]="false"
+      [circular]="true"
+      [autoplayInterval]="10000"
+      styleClass="custom-carousel">
+      <ng-template let-invitation pTemplate="item">
+        <div class="invitation-item">
+          <div class="invitation-image">
+            <img [src]="invitation.image" [alt]="invitation.language + ' Invitation'">
+          </div>
+          <button class="download-button" (click)="downloadPDF(invitation.id)">
+            <i class="pi pi-download"></i> Download {{invitation.language}} Invitation
+          </button>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
+  <div class="invitation-buttons">
+    <div class="button-row">
+      <button class="custom-button btn-orange" (click)="onMembership101()">
+        £ 101 Yearly Subscription
+      </button>
+      <button class="custom-button btn-orange" (click)="onMembership21()">
+        £ 21 Monthly Subscription
+      </button>
+    </div>
+    <div class="button-row">
+      <button class="custom-button btn-orange" (click)="onMandalaabhishekam48Days()">
+        48 Days Event Registration
+      </button>
+      <button class="custom-button btn-orange" (click)="onDonate()">
+        Donate
+      </button>
+    </div>
+  </div>
+</div>
