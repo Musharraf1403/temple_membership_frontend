@@ -294,6 +294,24 @@ export default {
                     }
                 }]
             }]
+        },
+        {
+            name: 'sponsor_section',
+            title: 'Sponsor Section',
+            type: 'document',
+            fields: [{
+                name: 'sponsor_images',
+                title: 'Sponsor Images',
+                type: 'array',
+                of: [{
+                    name: 'sponsor_image',
+                    title: 'Sponsor Image',
+                    type: 'image',
+                    options: {
+                        hotpost: true
+                    }
+                }]
+            }]
         }
     ]
 }
