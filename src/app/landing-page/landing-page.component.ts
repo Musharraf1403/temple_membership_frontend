@@ -23,7 +23,7 @@ export class LandingPageComponent {
   openForm = false;
   openDonationForm = false;
   openEventForm = false;
-  openMandalaabhishekamInvitation = true;
+  openMandalaabhishekamInvitation = false;
   responsiveOptions = [
     {
       breakpoint: '1400px',
