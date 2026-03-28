@@ -6,7 +6,8 @@
         <div class="temple-name">{{landingPageContent?.header_section.header_name}}</div>
       </div>
       <div class="header-nav-links">
-        <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+        <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links"
+          (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
         <div class="header-link event-link" (click)="onClickEvent()">48 Days Event</div>
         <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
       </div>
@@ -22,7 +23,8 @@
         <hr>
         <div class="timing-details">
           <div class="label">{{landingPageContent.hero_section.timings_text}}</div>
-          <div><i class="pi pi-clock"></i> {{landingPageContent.hero_section.timings_value_from}} to <i class="pi pi-clock"></i> {{landingPageContent.hero_section.timings_value_to}}</div>
+          <div><i class="pi pi-clock"></i> {{landingPageContent.hero_section.timings_value_from}} to <i
+              class="pi pi-clock"></i> {{landingPageContent.hero_section.timings_value_to}}</div>
         </div>
       </div>
       <div class="hero-image">
@@ -65,7 +67,8 @@
         </div>
         <div class="benefits">
           <div class="benefit" *ngFor="let benefit of plan.benefits">
-            <span> <span *ngIf="benefit.benefit_label"><strong>{{benefit.benefit_label}}</strong> - </span><span [innerHtml]="benefit.benefit_description"></span></span>
+            <span> <span *ngIf="benefit.benefit_label"><strong>{{benefit.benefit_label}}</strong> - </span><span
+                [innerHtml]="benefit.benefit_description"></span></span>
           </div>
         </div>
         <div class="subscribe-now">
@@ -76,11 +79,18 @@
     <div class="gallery-section" id="gallery">
       <div class="title">Our Gallery</div>
       <div class="images">
-        <p-carousel autoplayInterval="3000" [value]="galleryImages" [numVisible]="2" [numScroll]="2" [responsiveOptions]="responsiveOptions">
+        <p-carousel autoplayInterval="3000" [value]="galleryImages" [numVisible]="2" [numScroll]="2"
+          [responsiveOptions]="responsiveOptions">
           <ng-template pTemplate="item" let-item>
             <img [src]="item" class="gallery-image" />
           </ng-template>
         </p-carousel>
+      </div>
+    </div>
+    <div class="gallery-section" id="gallery">
+      <div class="title">Our Sponsors</div>
+      <div class="images" style="display: flex; justify-content: center; align-items: center;">
+        <img src="../assets/images/fastcredit-logo.jpeg" alt="FastCredit Logo" class="sponsor-logo" style="width: 50%; max-width: 300px;" />
       </div>
     </div>
     <div class="enroll-now-section">
@@ -107,7 +117,8 @@
         <div class="name">{{landingPageContent.footer_section.temple_name}}</div>
       </div>
       <div class="nav-links">
-        <div class="link" *ngFor="let link of landingPageContent.footer_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+        <div class="link" *ngFor="let link of landingPageContent.footer_section.navbar_links"
+          (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
       </div>
       <div class="contact-us-details">
         <div class="title">Contact Us</div>
@@ -118,7 +129,8 @@
             </div>
             <div class="details">
               <div class="label">Call Us</div>
-              <div class="value mobile-number" (click)="onClickMobileNumber(landingPageContent.footer_section.contact_us_details.call_us_value)">
+              <div class="value mobile-number"
+                (click)="onClickMobileNumber(landingPageContent.footer_section.contact_us_details.call_us_value)">
                 {{landingPageContent.footer_section.contact_us_details.call_us_value}}</div>
             </div>
           </div>
@@ -128,7 +140,9 @@
             </div>
             <div class="details">
               <div class="label">Mail Us</div>
-              <div class="value email-id" (click)="onClickEmail(landingPageContent.footer_section.contact_us_details.mail_us_value)">{{landingPageContent.footer_section.contact_us_details.mail_us_value}}</div>
+              <div class="value email-id"
+                (click)="onClickEmail(landingPageContent.footer_section.contact_us_details.mail_us_value)">
+                {{landingPageContent.footer_section.contact_us_details.mail_us_value}}</div>
             </div>
           </div>
           <div class="category">
@@ -138,8 +152,12 @@
             <div class="details">
               <div class="label">Location</div>
               <div class="value">{{landingPageContent.footer_section.contact_us_details.location_value}} <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.0459586158286!2d-3.023602512834369!3d53.39611776107477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b26e006f642b9%3A0x998613de6f3b6127!2s21%20Park%20St%2C%20Birkenhead%20CH41%203AB%2C%20UK!5e0!3m2!1sen!2sin!4v1767181562836!5m2!1sen!2sin" width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div></div>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.0459586158286!2d-3.023602512834369!3d53.39611776107477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b26e006f642b9%3A0x998613de6f3b6127!2s21%20Park%20St%2C%20Birkenhead%20CH41%203AB%2C%20UK!5e0!3m2!1sen!2sin!4v1767181562836!5m2!1sen!2sin"
+                    width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -153,25 +171,31 @@
   </div>
 </div>
 
-<p-dialog [modal]="true" header="Inviting you to the Maha Kumbabhishekam" [(visible)]="openMandalaabhishekamInvitation" class="dialog-box invitation-dialog">
-  <app-mandalaabhishekam-invitation (closeForm)="onCloseMandalaabhishekamInvitation($event)"></app-mandalaabhishekam-invitation>
+<p-dialog [modal]="true" header="Inviting you to the Maha Kumbabhishekam" [(visible)]="openMandalaabhishekamInvitation"
+  class="dialog-box invitation-dialog">
+  <app-mandalaabhishekam-invitation
+    (closeForm)="onCloseMandalaabhishekamInvitation($event)"></app-mandalaabhishekam-invitation>
 </p-dialog>
 
-<p-dialog [modal]="true" [header]="package_plan === 'monthly' ? 'Monthly Membership Form' : 'Yearly Membership Form'" [(visible)]="openForm" class="dialog-box">
-  <app-membership-form [package_plan]="package_plan" [package_price]="package_price" (closeForm)="onCloseForm($event)"></app-membership-form>
+<p-dialog [modal]="true" [header]="package_plan === 'monthly' ? 'Monthly Membership Form' : 'Yearly Membership Form'"
+  [(visible)]="openForm" class="dialog-box">
+  <app-membership-form [package_plan]="package_plan" [package_price]="package_price"
+    (closeForm)="onCloseForm($event)"></app-membership-form>
 </p-dialog>
 
 <p-dialog [modal]="true" header="Donation Form" [(visible)]="openDonationForm" class="dialog-box">
   <app-donation-form (closeForm)="onCloseDonationForm($event)"></app-donation-form>
 </p-dialog>
 
-<p-dialog [modal]="true" header="48-Day Mandala Abhishekam Registration" [(visible)]="openEventForm" class="dialog-box event-dialog">
+<p-dialog [modal]="true" header="48-Day Mandala Abhishekam Registration" [(visible)]="openEventForm"
+  class="dialog-box event-dialog">
   <app-event-form (closeForm)="onCloseEventForm($event)"></app-event-form>
 </p-dialog>
 
 <p-sidebar [(visible)]="sidebarVisible1" position="right">
   <div class="header-side-nav-links">
-    <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links" (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
+    <div class="header-link" *ngFor="let link of landingPageContent?.header_section.navbar_links"
+      (click)="navigateToSection(link.link_value)">{{link.link_label}}</div>
     <div class="header-link event-link" (click)="onClickEvent()">48 Days Event</div>
     <div class="header-link donation-link" (click)="onClickDonate()">Donate</div>
   </div>
